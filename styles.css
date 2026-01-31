@@ -59,40 +59,77 @@ body{
 .is-visible .reveal-item[data-in="right"]{ transform:none; }
 
 /* HERO */
+/* HEROをカード枠いっぱいに（左右の白縁を消す） */
 .hero{
-  position:relative;
-  min-height: 520px;
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(200,163,168,0.20), transparent 60%),
-    radial-gradient(900px 520px at 110% 10%, rgba(215,199,184,0.18), transparent 58%),
-    linear-gradient(#eef1f2, #f6f5f4);
-  padding: 30px 18px 34px;
+  padding: 0;              /* ← これが重要：左右余白ゼロ */
+  background: transparent; /* 背景はヒーロー画像に任せる */
 }
 
+/* hero-inner の最大幅制限を解除して“全面”に */
 .hero-inner{
-  max-width: 860px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   position: relative;
 }
 
-.hero-photo{
-  position:relative;
-  width: min(680px, 100%);
-  margin: 0 auto;
-  aspect-ratio: 1 / 1;
-  border-radius: 26px;
-  overflow: visible;
-  background: transparent;
+/* カバー＋写真＋名前を1ブロック化 */
+.hero-cover{
+  position: relative;
+  width: 100%;
+  height: min(760px, 92vh);
+  overflow: hidden;
+  border-radius: 18px 18px 0 0; /* card上部の丸みと馴染ませる */
+  background: #e9eef0;
 }
 
-/* 写真（SVGで切り抜き） */
-.photo-svg{
-  position:relative;
-  width:100%;
-  height:100%;
-  display:block;
-  filter: drop-shadow(0 18px 40px rgba(0,0,0,0.18));
+/* 画像は全面に敷く */
+.hero-cover .cover-photo,
+.hero-cover .cover-png{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+/* レイヤ順：写真→PNG→名前 */
+.hero-cover .cover-photo{ z-index: 1; }
+.hero-cover .cover-png{ z-index: 2; pointer-events: none; }
+
+/* 名前を画像に被せる */
+.hero-names.on-cover{
+  position: absolute;
+  left: 22px;
+  bottom: 26px;
+  z-index: 3;
+
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  /* 読みやすさ用のうっすら背景（好みで調整可） */
+  background: rgba(255,255,255,0.48);
+  backdrop-filter: blur(6px);
+
+  color: rgba(35,30,31,0.92);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+/* and を少し軽く */
+.hero-names.on-cover .and{
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  opacity: .85;
+}
+
+/* 日付（右上）は画像上に浮かせる */
+.hero-date{
+  z-index: 4;
+}
+
 
 .photo-img{ transform-origin: 50% 50%; }
 
@@ -121,9 +158,6 @@ body{
 .blob1{ transform: rotate(-6deg); }
 .blob2{ transform: rotate(10deg); opacity: .55; }
 
-.hero-photo .photo-svg{ z-index: 2; }
-.hero-photo .photo-veil{ z-index: 3; }
-
 /* 名前 */
 .hero-names{
   max-width: 860px;
@@ -139,17 +173,27 @@ body{
 
 /* 縦日付 */
 .hero-date{
-  position:absolute;
-  right: 10px;
-  top: 10px;
-  font-family: ui-serif, "Times New Roman", serif;
-  letter-spacing: 0.18em;
-  color: rgba(70,58,60,0.88);
-  text-align:center;
-  user-select:none;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 10;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 14px rgba(0,0,0,0.45);
 }
 .hero-date .chunk{ font-size: 30px; line-height: 1.2; }
 .hero-date .line{ width: 22px; height: 1px; background: rgba(70,58,60,0.45); margin: 10px auto; }
+
+/* hero-bg を基準に absolute できるように */
+.hero-bg{
+  position: relative;
+}
+
+/* 画像レイヤーは日付より下に */
+.hero-photo{ position: relative; z-index: 1; }
+.cover-photo{ z-index: 1; }
+.cover-png{ z-index: 2; pointer-events: none; }
+.hero-names{ position: relative; z-index: 5; }
+.hero-bg{ overflow: visible; }
 
 /* section */
 .section{
@@ -413,4 +457,23 @@ footer{
   .title{ font-size: 40px; }
   .hero-date .chunk{ font-size: 26px; }
   .countdown-hero .days{ font-size: 62px; }
+}
+
+
+/* カバー画像 */
+.cover-png{
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 2;
+}
+
+.cover-photo{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
 }
