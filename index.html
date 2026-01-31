@@ -130,27 +130,41 @@
 
           <div class="form-wrap">
             <!-- 後で action を Google Apps Script のURLに差し替える -->
-            <form action="#" method="post">
+            <form action="https://docs.google.com/forms/d/e/FAKE_FORM_ID/formResponse" method="post" target="hidden_iframe">
 
               <div class="field">
                 <div class="label">ご出欠 <span class="req">必須</span></div>
                 <div class="seg" role="radiogroup" aria-label="出欠">
                   <div>
-                    <input id="att_yes" type="radio" name="attendance" value="出席" required>
+                    <input id="att_yes" type="radio" name="entry.3333333333" value="出席" required>
                     <label for="att_yes">ご出席</label>
                   </div>
                   <div>
-                    <input id="att_no" type="radio" name="attendance" value="欠席">
+                    <input id="att_no" type="radio" name="entry.3333333333" value="欠席">
                     <label for="att_no">ご欠席</label>
                   </div>
                 </div>
               </div>
 
               <div class="field">
-                <div class="label">お名前 <span class="req">必須</span></div>
+                <div class="label">お名前 <span class="req">必須</span></div> <span class="req">必須</span></div>
                 <div class="underline-row two">
-                  <div class="u"><input name="family_name" type="text" placeholder="姓" required></div>
-                  <div class="u"><input name="given_name" type="text" placeholder="名" required></div>
+                  <div class="u"><input name="entry.4444444444" type="text" placeholder="姓" required></div>
+                  <div class="u"><input name="entry.5555555555" type="text" placeholder="名" required></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label">ご住所</div>
+                <div class="underline-row">
+                  <div class="u"><input name="entry.2222222222" type="text" placeholder="都道府県・市区町村・番地"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label">メールアドレス <span class="req">必須</span></div>
+                <div class="underline-row">
+                  <div class="u"><input name="entry.1111111111" type="email" placeholder="example@email.com" required></div>
                 </div>
               </div>
 
@@ -159,7 +173,7 @@
                 <div class="hint">※同伴者がいる場合は人数を選択してください（最大4名）</div>
                 <div class="underline-row" style="margin-top: 12px;">
                   <div class="u">
-                    <select id="companionCount" name="companion_count">
+                    <select id="companionCount" name="entry.6666666666">
                       <option value="0" selected>同伴者なし</option>
                       <option value="1">同伴者 1名</option>
                       <option value="2">同伴者 2名</option>
@@ -176,14 +190,14 @@
                 <div class="label">アレルギーについて</div>
                 <div class="hint">アレルギーなど食べられないものがございましたらご遠慮なくお書き添えください</div>
                 <div class="underline-row" style="margin-top: 10px;">
-                  <div class="u"><textarea name="allergy" placeholder="例：甲殻類／ナッツ など"></textarea></div>
+                  <div class="u"><textarea name="entry.7777777777" placeholder="例：甲殻類／ナッツ など"></textarea></div>
                 </div>
               </div>
 
               <div class="field">
                 <div class="label">メッセージ（任意）</div>
                 <div class="underline-row" style="margin-top: 10px;">
-                  <div class="u"><textarea name="message" placeholder="ご自由にお書きください"></textarea></div>
+                  <div class="u"><textarea name="entry.8888888888" placeholder="ご自由にお書きください"></textarea></div>
                 </div>
               </div>
 
