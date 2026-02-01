@@ -130,7 +130,10 @@
 
           <div class="form-wrap">
             <!-- 後で action を Google Apps Script のURLに差し替える -->
-            <form action="https://docs.google.com/forms/d/e/FAKE_FORM_ID/formResponse" method="post" target="hidden_iframe">
+            <form id="rsvpForm"
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrLQZcEr69QflW4LJn8VKNEBVn-aIxaU-dM83VUaIscJEQdQ/formResponse"
+                method="post"
+                target="hidden_iframe">
 
               <div class="field">
                 <div class="label">ご出欠 <span class="req">必須</span></div>
@@ -147,25 +150,27 @@
               </div>
 
               <div class="field">
-                <div class="label">お名前 <span class="req">必須</span></div> <span class="req">必須</span></div>
-                <div class="underline-row two">
-                  <div class="u"><input name="entry.4444444444" type="text" placeholder="姓" required></div>
-                  <div class="u"><input name="entry.5555555555" type="text" placeholder="名" required></div>
+                <div class="label">メールアドレス <span class="req">必須</span></div>
+                <div class="underline-row">
+                  <div class="u"><input name="entry.1866063854" type="email" placeholder="example@email.com" required></div>
                 </div>
               </div>
 
               <div class="field">
                 <div class="label">ご住所</div>
                 <div class="underline-row">
-                  <div class="u"><input name="entry.2222222222" type="text" placeholder="都道府県・市区町村・番地"></div>
+                  <div class="u"><input name="entry.1652680094" type="text" placeholder="都道府県・市区町村・番地"></div>
                 </div>
               </div>
 
               <div class="field">
-                <div class="label">メールアドレス <span class="req">必須</span></div>
+                <div class="label">お名前 <span class="req">必須</span></div>
                 <div class="underline-row">
-                  <div class="u"><input name="entry.1111111111" type="email" placeholder="example@email.com" required></div>
+                  <div class="u">
+                    <input name="entry.2014477166" type="text" placeholder="例：山田 太郎" required>
+                  </div>
                 </div>
+              </div>
               </div>
 
               <div class="field">
@@ -173,7 +178,7 @@
                 <div class="hint">※同伴者がいる場合は人数を選択してください（最大4名）</div>
                 <div class="underline-row" style="margin-top: 12px;">
                   <div class="u">
-                    <select id="companionCount" name="entry.6666666666">
+                    <select id="companionCount" name="entry.1754266666">
                       <option value="0" selected>同伴者なし</option>
                       <option value="1">同伴者 1名</option>
                       <option value="2">同伴者 2名</option>
@@ -190,14 +195,14 @@
                 <div class="label">アレルギーについて</div>
                 <div class="hint">アレルギーなど食べられないものがございましたらご遠慮なくお書き添えください</div>
                 <div class="underline-row" style="margin-top: 10px;">
-                  <div class="u"><textarea name="entry.7777777777" placeholder="例：甲殻類／ナッツ など"></textarea></div>
+                  <div class="u"><textarea name="entry.236213015" placeholder="例：甲殻類／ナッツ など"></textarea></div>
                 </div>
               </div>
 
               <div class="field">
                 <div class="label">メッセージ（任意）</div>
                 <div class="underline-row" style="margin-top: 10px;">
-                  <div class="u"><textarea name="entry.8888888888" placeholder="ご自由にお書きください"></textarea></div>
+                  <div class="u"><textarea name="entry.1159741246" placeholder="ご自由にお書きください"></textarea></div>
                 </div>
               </div>
 
@@ -206,6 +211,19 @@
               </div>
 
             </form>
+
+            <!-- Google Form 送信用 iframe（非表示） -->
+            <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+            <!-- 送信完了メッセージ -->
+            <div id="thanks" style="display:none; margin-top:40px; text-align:center;">
+              <h3 style="font-size:22px; letter-spacing:0.08em;">Thank you</h3>
+              <p style="margin-top:16px; white-space:pre-line;">
+ご回答ありがとうございました。
+当日お会いできますことを
+心より楽しみにしております。
+              </p>
+            </div>
           </div>
 
           <footer>© 2026 KAMBAYASHI IZURU & ITO KINO</footer>

@@ -134,3 +134,11 @@ setInterval(tick, 1000)
   countEl.addEventListener("change", render)
   render()
 })()
+
+// 送信後に Thanks を表示
+document.getElementById("rsvpForm")?.addEventListener("submit", () => {
+  setTimeout(() => {
+    document.getElementById("rsvpForm").style.display = "none"
+    document.getElementById("thanks").style.display = "block"
+  }, 800) // Google Form送信待ち
+})
