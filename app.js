@@ -86,7 +86,17 @@ setInterval(tick, 1000)
   const wrap = document.getElementById("companions")
   if (!countEl || !wrap) return
 
-  function companionBlock(i) {
+  // ★あなたが指定した対応関係
+  const MAP = [
+    { name: "entry.141648264", allergy: "entry.1754266666", label: "同伴者1" },
+    { name: "entry.1323711423", allergy: "entry.2063798039", label: "同伴者2" },
+    { name: "entry.471870219", allergy: "entry.505184530", label: "同伴者3" },
+    { name: "entry.149259454", allergy: "entry.408397873", label: "同伴者4" }
+  ]
+
+  function block(i) {
+    const m = MAP[i - 1]
+
     const box = document.createElement("div")
     box.style.marginTop = "18px"
 
@@ -94,47 +104,48 @@ setInterval(tick, 1000)
     head.className = "hint"
     head.style.marginTop = "0"
     head.style.marginBottom = "10px"
-    head.textContent = `同伴者${i}`
+    head.textContent = m.label
     box.appendChild(head)
 
-    const row1 = document.createElement("div")
-    row1.className = "underline-row two"
+    const row = document.createElement("div")
+    row.className = "underline-row two"
 
+    // 名前（必須にするかは好み。ここでは任意にしておく）
     const u1 = document.createElement("div")
     u1.className = "u"
     const in1 = document.createElement("input")
-    in1.name = `companion_${i}_name`
+    in1.name = m.name // ★Google Formのentry
     in1.type = "text"
-    in1.placeholder = `同伴者${i} お名前`
-    in1.required = true
+    in1.placeholder = `${m.label} お名前`
     u1.appendChild(in1)
 
+    // アレルギー（任意）
     const u2 = document.createElement("div")
     u2.className = "u"
     const in2 = document.createElement("input")
-    in2.name = `companion_${i}_allergy`
+    in2.name = m.allergy // ★Google Formのentry
     in2.type = "text"
-    in2.placeholder = `同伴者${i} アレルギー（任意）`
+    in2.placeholder = `${m.label} アレルギー（任意）`
     u2.appendChild(in2)
 
-    row1.appendChild(u1)
-    row1.appendChild(u2)
-    box.appendChild(row1)
+    row.appendChild(u1)
+    row.appendChild(u2)
+    box.appendChild(row)
 
     return box
   }
 
   function render() {
-    const n = parseInt(countEl.value || "0", 10)
+    const n = Math.max(0, Math.min(4, parseInt(countEl.value || "0", 10)))
     wrap.innerHTML = ""
-    if (!n) return
-    for (let i = 1; i <= n; i++) wrap.appendChild(companionBlock(i))
+    for (let i = 1; i <= n; i++) {
+      wrap.appendChild(block(i))
+    }
   }
 
   countEl.addEventListener("change", render)
   render()
 })()
-
 // 送信後に Thanks を表示
 document.getElementById("rsvpForm")?.addEventListener("submit", () => {
   setTimeout(() => {
