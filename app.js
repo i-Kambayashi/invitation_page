@@ -88,10 +88,30 @@ setInterval(tick, 1000)
 
   // ★あなたが指定した対応関係
   const MAP = [
-    { name: "entry.141648264", allergy: "entry.1754266666", label: "同伴者1" },
-    { name: "entry.1323711423", allergy: "entry.2063798039", label: "同伴者2" },
-    { name: "entry.471870219", allergy: "entry.505184530", label: "同伴者3" },
-    { name: "entry.149259454", allergy: "entry.408397873", label: "同伴者4" }
+    {
+      label: "同伴者1",
+      name: "entry.141648264",
+      allergy: "entry.1754266666",
+      color: "entry.900296876"
+    },
+    {
+      label: "同伴者2",
+      name: "entry.1323711423",
+      allergy: "entry.2063798039",
+      color: "entry.296427039"
+    },
+    {
+      label: "同伴者3",
+      name: "entry.471870219",
+      allergy: "entry.505184530",
+      color: "entry.967025313"
+    },
+    {
+      label: "同伴者4",
+      name: "entry.149259454",
+      allergy: "entry.408397873",
+      color: "entry.1418404021"
+    }
   ]
 
   function block(i) {
@@ -108,30 +128,39 @@ setInterval(tick, 1000)
     box.appendChild(head)
 
     const row = document.createElement("div")
-    row.className = "underline-row two"
+    row.className = "underline-row"
 
-    // 名前（必須にするかは好み。ここでは任意にしておく）
     const u1 = document.createElement("div")
     u1.className = "u"
     const in1 = document.createElement("input")
-    in1.name = m.name // ★Google Formのentry
+    in1.name = m.name
     in1.type = "text"
     in1.placeholder = `${m.label} お名前`
+    in1.setAttribute("form", "rsvpForm")
     u1.appendChild(in1)
 
-    // アレルギー（任意）
     const u2 = document.createElement("div")
     u2.className = "u"
     const in2 = document.createElement("input")
-    in2.name = m.allergy // ★Google Formのentry
+    in2.name = m.allergy
     in2.type = "text"
     in2.placeholder = `${m.label} アレルギー（任意）`
+    in2.setAttribute("form", "rsvpForm")
     u2.appendChild(in2)
+
+    const u3 = document.createElement("div")
+    u3.className = "u"
+    const in3 = document.createElement("input")
+    in3.name = m.color
+    in3.type = "text"
+    in3.placeholder = `${m.label} お好きな色（任意）`
+    in3.setAttribute("form", "rsvpForm")
+    u3.appendChild(in3)
 
     row.appendChild(u1)
     row.appendChild(u2)
+    row.appendChild(u3)
     box.appendChild(row)
-
     return box
   }
 
