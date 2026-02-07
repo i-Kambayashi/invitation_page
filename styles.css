@@ -442,6 +442,8 @@ button{
   cursor:pointer;
   box-shadow: 0 10px 26px rgba(0,0,0,0.10);
   transition: transform .15s ease, box-shadow .15s ease;
+  color: rgba(35,30,31,0.92);           /* ← これを追加 */
+  -webkit-text-fill-color: rgba(35,30,31,0.92); /* ← iOS対策（あると安心） */
 }
 button:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,0.14); }
 
