@@ -101,7 +101,7 @@ body{
   position: absolute;
   left: 22px;
   bottom: 26px;
-  z-index: 3;
+  z-index: 15;
 
   margin: 0;
   padding: 12px 14px;
@@ -125,10 +125,6 @@ body{
   opacity: .85;
 }
 
-/* 日付（右上）は画像上に浮かせる */
-.hero-date{
-  z-index: 4;
-}
 
 
 .photo-img{ transform-origin: 50% 50%; }
@@ -176,12 +172,13 @@ body{
   position: absolute;
   right: 16px;
   top: 16px;
-  z-index: 10;
+  /* 日付（右上）は画像上に浮かせる */
+  z-index: 5;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 2px 14px rgba(0,0,0,0.45);
 }
 .hero-date .chunk{ font-size: 30px; line-height: 1.2; }
-.hero-date .line{ width: 22px; height: 1px; background: rgba(70,58,60,0.45); margin: 10px auto; }
+.hero-date .line{ width: 22px; height: 1px; background: rgba(255,255,255,0.92); margin: 10px auto; }
 
 /* hero-bg を基準に absolute できるように */
 .hero-bg{
@@ -189,7 +186,11 @@ body{
 }
 
 /* 画像レイヤーは日付より下に */
-.hero-photo{ position: relative; z-index: 1; }
+.hero-photo{
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
 .cover-photo{ z-index: 1; }
 .cover-png{ z-index: 2; pointer-events: none; }
 .hero-names{ position: relative; z-index: 5; }

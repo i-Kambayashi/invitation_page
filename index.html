@@ -15,29 +15,23 @@
 
       <!-- HERO / COVER -->
       <section class="hero">
-        <div class="hero-inner">
 
+        <!-- カバー画像 + 写真 + 名前 を1ブロックにして“全面”表示 -->
+        <div class="hero-cover reveal" data-parallax="0.22">
+          <!-- 写真（下） -->
+          <img src="photo.jpg" alt="写真" class="cover-photo" loading="eager" />
+          <!-- PNG（上）：黒抜きの形から写真が見える -->
+          <img src="cover.png" alt="表紙デザイン" class="cover-png" loading="eager" />
           <div class="hero-date" aria-label="日付">
             <div class="chunk">03</div>
             <div class="line"></div>
             <div class="chunk">28</div>
-            <!-- <div class="line"></div>
-            <div class="chunk">26</div> -->
           </div>
-
-          <!-- カバー画像 + 写真 + 名前 を1ブロックにして“全面”表示 -->
-          <div class="hero-cover reveal" data-parallax="0.22">
-            <!-- 写真（下） -->
-            <img src="photo.jpg" alt="おふたりの写真" class="cover-photo" loading="eager" />
-            <!-- PNG（上）：黒抜きの形から写真が見える -->
-            <img src="cover.png" alt="表紙デザイン" class="cover-png" loading="eager" />
-
-            <!-- 名前：画像に被せる -->
-            <div class="hero-names on-cover reveal">
-              KAMBAYASHI IZURU<br>
-              <span class="and">and</span><br>
-              ITO KINO
-            </div>
+          <!-- 名前：画像に被せる -->
+          <div class="hero-names on-cover reveal">
+            KAMBAYASHI IZURU<br>
+            <span class="and">and</span><br>
+            ITO KINO
           </div>
 
         </div>
@@ -106,7 +100,7 @@
             <div class="k">披露宴</div><div class="v">16時30分（開宴）</div>
             <div class="k">場　所</div><div class="v">ルミアモーレ</div>
             <div class="k">住　所</div><div class="v">〒105-0022 東京都港区海岸1-11-1 ニューピア竹芝ノースタワー3F</div>
-            <div class="k">アクセス</div><div class="v">ゆりかもめ「竹芝」駅 徒歩1分、JR「浜松町」駅北口 徒歩8分、都営大江戸線「大門」駅より 徒歩10分</div>
+            <div class="k">アクセス</div><div class="v">ゆりかもめ「竹芝」駅 徒歩3分<br>JR「浜松町」駅北口 徒歩12分<br>都営大江戸線「大門」駅B1出口 徒歩14分</div>
           </div>
         </div>
       </section>
@@ -126,6 +120,9 @@
 お手数ではございますが
 ご都合の程を 2026年2月21日 迄に
 ご一報賜りますようお願い申し上げます
+
+なお、締切後にご都合が変わった場合は、
+直接ご連絡いただければ幸いです
           </div>
         </div>
       </section>
@@ -133,8 +130,8 @@
       <!-- RSVP FORM -->
       <section class="section reveal" style="padding-top: 0;">
         <div class="section-inner">
-          <h2 class="title">HOPE</h2>
-          <div class="subtle">We request your presence at our party</div>
+          <h2 class="title">Attendance</h2>
+          <div class="subtle">下記フォームより、ご出欠のご回答をお願いいたします</div>
 
           <div class="form-wrap">
             <form id="rsvpForm"
@@ -167,8 +164,9 @@
 
               <div class="field">
                 <div class="label">
-                  ご住所（引き出物は郵送を予定しております。お届け可能なご住所をご入力ください）
+                  ご住所
                   <span class="req">必須</span>
+                  <div class="hint">引き出物は郵送を予定しておりますので、お届け可能なご住所をご入力ください</div>
                 </div>
                 <div class="underline-row">
                   <div class="u"><input name="entry.1652680094" type="text" placeholder="都道府県・市区町村・番地" required></div>
